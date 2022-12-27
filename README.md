@@ -13,9 +13,13 @@ Example: foo.example.com:8000 -> 80.xx.xx.x:8000
 
 1. Create a static URL (eg. foo.example.com)
 2. Create a database where the public dynamic IP is being cached
-   `todo CREATE TABLE IP CACHE`
-3. Copy `remote/index.php` into the webroot of your static URL
-4. Configure `.env` in the webroot (see `remote/.env.sample`)
+   ```
+   CREATE TABLE `ips` (
+      `ip` VARCHAR(15) NOT NULL,
+      `date_time` DATETIME NOT NULL
+   )
+   ```
+3. Copy `remote/index.php` into the webroot of your static URL, replace database values in `$databaseConfig`.
 
 ## Setup local machine
 
