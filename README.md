@@ -25,5 +25,5 @@ Example: foo.example.com:8000 -> 80.xx.xx.x:8000
 
 1. Clone this project
 2. Install docker
-3. Create a daily cron job which will run `todo`
-
+3. Build the docker container: Run `docker build --tag ip-cacher .`
+4. Create a daily cron job which will run the IP caching `docker run -e DATABASE_HOST=xx -e DATABASE_USERNAME=xx -e DATABASE_PASSWORD=xx -e DATABASE_NAME=xx ip-cacher`
