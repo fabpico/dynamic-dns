@@ -7,7 +7,7 @@ $databaseConfig = [
     'database' => 'xx',
 ];
 
-function getIp(array $databaseConfig): string
+function getIpCache(array $databaseConfig): array
 {
     $mysqli = new mysqli(
         $databaseConfig['host'],
@@ -15,9 +15,9 @@ function getIp(array $databaseConfig): string
         $databaseConfig['password'],
         $databaseConfig['database'],
     );
-    $result = $mysqli->query("SELECT ip FROM ips");
-    $row = $result->fetch_row();
-    return $row[0];
+    $result = $mysqli->query("SELECT ip, date_time FROM ips");
+    $row = $result->fetch_assoc();
+    return $row;
 }
 
 function createRedirectionUrl(string $ip): string
@@ -26,8 +26,19 @@ function createRedirectionUrl(string $ip): string
     return "http://$ip:{$port}";
 }
 
-$ip = getIp($databaseConfig);
-$redirectionUrl = createRedirectionUrl($ip);
-echo "Redirecting to $redirectionUrl";
-sleep(2);
-echo "<script>window.location.href = '$redirectionUrl'</script>";
+$ipCache = getIpCache($databaseConfig);
+$redirectionUrl = createRedirectionUrl($ipCache['ip']);
+echo <<<HEREDOC
+
+<p>
+    Proceeding to {$ipCache['ip']}...<br/>
+    (last updated at {$ipCache['date_time']})
+</p>
+
+<script>
+    setTimeout(function(){
+    window.location.href = '$redirectionUrl'
+    }, 4000)
+</script>
+
+HEREDOC;
