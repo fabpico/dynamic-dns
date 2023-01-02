@@ -3,7 +3,7 @@
 Access your local machine remotely with a static URL, if you only have a dynamic public IP address.  
 The mechanism does not change any DNS records on the static URL, it redirects to the updated IP.
 
-Example: foo.example.com:8000 -> 80.xx.xx.x:8000
+Example: foo.example.com?port=4533 -> 80.xx.xx.x:4533
 
 > **Why should I use that, compared to a service like noip.com?**
 >
