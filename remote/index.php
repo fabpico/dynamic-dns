@@ -30,6 +30,18 @@ $ipCache = getIpCache($databaseConfig);
 $redirectionUrl = createRedirectionUrl($ipCache['ip']);
 echo <<<HEREDOC
 
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<style>
+    body {
+        font-family: Arial;
+        background: #181818;
+        color: white;
+        text-align: center;
+        padding-top: 100px;
+        line-height: 25px;
+    }
+</style>
+
 <p>
     Proceeding to {$ipCache['ip']}...<br/>
     (last updated at {$ipCache['date_time']})
