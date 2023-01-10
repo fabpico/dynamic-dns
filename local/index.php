@@ -9,6 +9,9 @@ $databaseConfig = [
 
 function cacheIp(string $ip, array $databaseConfig): string
 {
+    if ($ip === '') {
+        return "IP must not be empty.";
+    }
     $mysqli = new mysqli(
         $databaseConfig['host'],
         $databaseConfig['username'],
