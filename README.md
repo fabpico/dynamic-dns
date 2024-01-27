@@ -30,9 +30,9 @@ Example: foo.example.com?port=4533 -> 80.xx.xx.x:4533
 ## Setup local machine
 
 1. Clone this project
-2. Build the docker container: Run `docker build --tag ip-cacher .`
+2. Build the docker container: Run `docker build --tag dynamic-dns .`
 3. Create a daily cron job for following command (this caches the dynamic IP)  
-   `docker run -e DATABASE_HOST=xx -e DATABASE_USERNAME=xx -e DATABASE_PASSWORD=xx -e DATABASE_NAME=xx ip-cacher`
+   `docker run -e DATABASE_HOST=xx -e DATABASE_USERNAME=xx -e DATABASE_PASSWORD=xx -e DATABASE_NAME=xx dynamic-dns`
 
 ## Enjoy
 
